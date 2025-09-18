@@ -10,7 +10,20 @@ public class Program {
     public void run(){
         Login login = new Login();
         activePlayer = login.connect();
-        meny();
+        adminOrNot();
+    }
+
+    public void adminOrNot(){
+        //todo: legg til forskjellige funksjoner for hver login valg.
+        if(activePlayer.isAdmin()) {
+            System.out.println("logged in as admin...");
+            meny();
+        } else if (activePlayer.isGuest()) {
+            System.out.println("lgged in as guest...");
+        }else{
+            System.out.println("welcome " + activePlayer.displayName());
+            meny();
+        }
     }
     public void meny(){
 
@@ -36,8 +49,10 @@ public class Program {
                 case 4:
                     System.out.println("goodbye");
                     check = false;
+                    break;
                 default:
                     System.out.println("enter a valid input!!!\n");
+                    break;
             }
         }
 

@@ -8,7 +8,7 @@ public class Login {
         Scanner scanner = new Scanner(System.in);
         System.out.println("login to your account: ");
 
-        System.out.println("your user name:\n");
+        System.out.println("your user name:");
         String userName = scanner.nextLine();
 
         System.out.println("your user password: ");
@@ -19,23 +19,4 @@ public class Login {
 
         return player;
     }
-    private  final Bank bank = new Bank();
-    public void connects(){
-        boolean check = true;
-        System.out.println("login to your account: ");
-
-        System.out.println("your user name:\n");
-        Scanner input = new Scanner(System.in);
-        String userName = input.nextLine().toLowerCase();
-
-        System.out.println("your user password: ");
-        Scanner input2 = new Scanner(System.in);
-        String password = input2.nextLine().toLowerCase();
-
-        Player player = new Player(userName, password);
-        System.out.println(player);
-
-
-    }
-
 }

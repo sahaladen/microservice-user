@@ -1,17 +1,24 @@
 package com.example.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-
+//@Entity
+//@NoArgsConstructor(force = true)
 public class Player {
+    //todo: fiks database koblingen slik at den faktisk fungerer
+   /* @Id
+    @GeneratedValue
+    private long id;
+    */
     private final String userName;
     private final String password;
-
     private int balance;
 
 
@@ -23,7 +30,7 @@ public class Player {
         this.balance = 0;
         //den vil registere og lagre alle brukere som blir lagd BARE i minne.
         //todo: legg dette inn i en database
-        allPlayer.add(this);
+        //allPlayer.add(this);
     }
 
 
@@ -38,8 +45,28 @@ public class Player {
 
 
 
-    @Getter
+
     private static final List<Player> allPlayer = new ArrayList<>();
+
+    @JsonIgnore //får dem ikke opp på siden
+    public List<Player> getAllPlayer(){
+        return allPlayer;
+    }
+
+    @JsonIgnore
+    public boolean isAdmin(){
+        return "admin".equals(userName) && "admin".equals(password);
+    }
+    @JsonIgnore
+    public boolean isGuest(){
+        return "guest".equals(userName) && "guest".equals(password);
+    }
+
+    public String displayName(){
+        return userName;
+    }
+
+
 
 
 
