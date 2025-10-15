@@ -16,7 +16,7 @@ import java.util.List;
 @Slf4j
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/blackjack/user")
+@RequestMapping("/microservice/user")
 public class UserController {
     private final PlayerServiceImp playerService;
 
