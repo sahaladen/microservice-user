@@ -1,22 +1,23 @@
-package com.example.user;
+package com.example.user.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import lombok.Getter;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.Id;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import java.util.ArrayList;
 import java.util.List;
 
 
-//@Entity
-//@NoArgsConstructor(force = true)
+@Entity
+@NoArgsConstructor(force = true)
 public class Player {
     //todo: fiks database koblingen slik at den faktisk fungerer
-   /* @Id
+    @Id
     @GeneratedValue
-    private long id;
-    */
+    private Long id;
+
     private final String userName;
     private final String password;
     private int balance;

@@ -1,5 +1,7 @@
 package com.example.user;
 
+import com.example.user.model.Player;
+
 import java.util.Scanner;
 
 public class Bank {

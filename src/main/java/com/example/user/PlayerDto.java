@@ -1,8 +1,21 @@
 package com.example.user;
 
+import com.example.user.model.Player;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import lombok.NoArgsConstructor;
+
+@Entity
+@NoArgsConstructor
 public class PlayerDto {
-    private final String userName;
-    private final int balance;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+    private String userName;
+    private int balance;
 
     public PlayerDto(Player player) {
         this.userName = player.displayName();
@@ -15,5 +28,21 @@ public class PlayerDto {
 
     public int getBalance() {
         return balance;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public void setBalance(int balance) {
+        this.balance = balance;
     }
 }

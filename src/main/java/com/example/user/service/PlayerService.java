@@ -1,10 +1,11 @@
 package com.example.user.service;
 
-import com.example.user.Player;
+import com.example.user.PlayerDto;
+import com.example.user.model.Player;
 
 import java.util.List;
 
 public interface PlayerService {
-    List<Player> getAllPlayers();
+    List<PlayerDto> getAllPlayers();
 
 }

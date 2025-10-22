@@ -4,25 +4,22 @@ import com.example.user.PlayerDto;
 import com.example.user.model.Player;
 import com.example.user.model.PlayerRepo;
 import lombok.RequiredArgsConstructor;
-import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
-@Slf4j
 @Service
-public class PlayerServiceImp implements PlayerService {
+@RequiredArgsConstructor
+public class PlayerServiceDb implements PlayerService{
 
-    private final List<PlayerDto> player = new ArrayList<>();
-
-
-
-
+    private final PlayerRepo playerRepo;
 
     @Override
     public List<PlayerDto> getAllPlayers() {
-        //playerRepo.findAll();
-        return null;
+        return playerRepo.findAll();
+    }
+
+    public void addPlayer(PlayerDto player){
+        playerRepo.save(player);
     }
 }
