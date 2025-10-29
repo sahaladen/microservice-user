@@ -41,6 +41,8 @@ public class UserController {
         return ResponseEntity.ok(response);
     }
 
+
+
     @GetMapping("/testadd")
     public void addPlayer(){
         Player testPlayer = new Player("testname","testpassword");
