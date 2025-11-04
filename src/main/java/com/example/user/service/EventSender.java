@@ -18,13 +18,13 @@ public class EventSender {
     }
 
     public void sendPlayerInfo(PlayerDto player) {
-        String routingKey = "playerinfo.new"; // must match binding pattern
+        String routingKey = "playerinfo.new";
         log.info("Sending player info via exchange {} with routing key {}: {}", exchangeName, routingKey, player);
         amqpTemplate.convertAndSend(exchangeName, routingKey, player);
     }
 
     public void sendBalanceUpdate(PlayerDto player) {
-        String routingKey = "playerbalance.update"; // must match binding pattern
+        String routingKey = "playerbalance.update";
         log.info("Sending balance update via exchange {} with routing key {}: {}", exchangeName, routingKey, player);
         amqpTemplate.convertAndSend(exchangeName, routingKey, player);
     }
