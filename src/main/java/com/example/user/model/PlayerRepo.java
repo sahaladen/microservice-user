@@ -7,4 +7,5 @@ import java.util.Optional;
 
 public interface PlayerRepo extends JpaRepository <PlayerDto, Long>{
     Optional<PlayerDto> findByUserName(String userName);
+
 }

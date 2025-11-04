@@ -8,10 +8,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PokerListener {
 
-
     @RabbitListener(queues = "${amqp.queue.name}")
     public void receiveMessage(String message) {
-        log.info("Received message from poker service: {}", message);
+        log.info("Received message from userInfo service: {}", message);
     }
 
 }

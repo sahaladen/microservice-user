@@ -3,6 +3,7 @@ package com.example.user.controller;
 import com.example.user.model.LoginRequest;
 import com.example.user.model.Player;
 import com.example.user.PlayerDto;
+import com.example.user.service.EventSender;
 import com.example.user.service.PlayerServiceDb;
 import com.example.user.service.PlayerServiceImp;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ import java.util.Map;
 public class UserController {
     private final PlayerServiceImp playerService;
     private final PlayerServiceDb playerServiceDb;
-
+    private final EventSender eventSender;
 
 
     @GetMapping("/butDB")
@@ -45,9 +46,30 @@ public class UserController {
 
     @GetMapping("/testadd")
     public void addPlayer(){
-        Player testPlayer = new Player("testname","testpassword");
-        testPlayer.setBalance(11111);
-        PlayerDto testdto = new PlayerDto(testPlayer);
-        playerServiceDb.addPlayer(testdto);
+        String[] names = {
+                "testname1", "testname2", "testname3", "testname4", "testname5",
+                "testname6", "testname7", "testname8", "testname9", "testname10"
+        };
+
+        String[] passwords = {
+                "testpassword1", "testpassword2", "testpassword3", "testpassword4", "testpassword5",
+                "testpassword6", "testpassword7", "testpassword8", "testpassword9", "testpassword10"
+        };
+
+        int[] balances = {
+                11111, 12312, 1324513, 432546, 12345235,
+                65453, 667635643, 876554, 67876764, 876543324
+        };
+
+        for (int i = 0; i < names.length; i++) {
+            Player player = new Player(names[i], passwords[i]);
+            player.setBalance(balances[i]);
+
+            PlayerDto dto = new PlayerDto(player);
+            playerServiceDb.addPlayer(dto);
+
+            eventSender.sendPlayerInfo(dto);
+            eventSender.sendBalanceUpdate(dto);
+        }
     }
 }
