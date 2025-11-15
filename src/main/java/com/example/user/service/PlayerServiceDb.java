@@ -26,6 +26,7 @@ public class PlayerServiceDb implements PlayerService{
     public Optional<PlayerDto> findByUserName(String userName) {
         return playerRepo.findByUserName(userName);
     }
+
     public PlayerDto updateBalance(String userName, int newBalance){
         PlayerDto player = findByUserName(userName)
                 .orElseThrow(() -> new RuntimeException("player not found"));
