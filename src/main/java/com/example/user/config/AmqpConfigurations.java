@@ -22,6 +22,29 @@ public class AmqpConfigurations {
     }
 
     @Bean
+    public Queue blackjackQueue(@Value("${amqp.queue.playerupdate}") String queueName) {
+        return new Queue(queueName, true); // durable queue
+    }
+
+    @Bean
+    public TopicExchange blackjackExchange(
+            @Value("${amqp.exchange.playerupdate}") String exchangeName) {
+        return new TopicExchange(exchangeName);
+    }
+
+    @Bean
+    public Binding blackjackBinding(
+            Queue blackjackQueue,
+            TopicExchange blackjackExchange,
+            @Value("${amqp.routingkey.playerupdate}") String routingKey) {
+
+        return BindingBuilder
+                .bind(blackjackQueue)
+                .to(blackjackExchange)
+                .with(routingKey);
+    }
+
+    @Bean
     public Jackson2JsonMessageConverter messageConverter(){
         return new Jackson2JsonMessageConverter();
     }

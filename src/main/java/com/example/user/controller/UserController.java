@@ -24,7 +24,7 @@ public class UserController {
     private final PlayerServiceDb playerServiceDb;
 
 
-    @GetMapping("/butDB")
+    @GetMapping("/getallplayers")
     public List<PlayerDto> getDBPlayers(){
         return playerServiceDb.getAllPlayers();
     }
